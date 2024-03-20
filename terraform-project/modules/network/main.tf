@@ -74,23 +74,6 @@ resource "aws_security_group" "allow_web" {
     }
 }
 
-resource "aws_security_group" "allow_ssh" {
-    name = "allow_ssh_traffic"
-    description = "Allow SSH inbound traffic"
-    vpc_id = aws_vpc.main.id
-
-    ingress {
-        from_port = 22
-        to_port = 22
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-
-    tags = {
-        Name = "AllowSSHTrafficSG"
-    }
-}
-
 resource "aws_security_group" "lb_sg" {
     name        = "lb-sg"
     description = "Security group for Load Balancer"
